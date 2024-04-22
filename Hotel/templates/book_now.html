@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Oregano&display=swap" rel="stylesheet">
+<div class="row">
+<div class="col l8 offset-l2 m-1 offset-m1 s12">
+
+ <div class="card horizontal">
+  
+      <div class="card-image ">
+        
+        <img src="{{data.room_image.url}}"width="100%"height="400px;">
+      </div>
+      <div class="card-stacked" >
+        <div class="card-content">
+          <h3 class="center text-green" style="font-family: 'Oregano', cursive;" ><b>Click on the Confirm Booking to book your room...</b></h3>  
+          <span class="text-black" style="font-size:large"><b>{{data.room_type}}</b></span>
+          <p class="text-black"><b>Stay Duration:</b> {{start}} to {{end}}</p>
+          <p class="text-black"><b>Room No: </b> {{data.room_no}}</p>
+          <p class="text-black"><b>Total Bill: </b> {{no_of_days}}*{{data.price}} = <i class="fa-solid fa-indian-rupee-sign"></i> {{bill}}</p>
+          <p class="text-black"><b>Room Manager: </b>{{data.manager}}</p>
+        </div>
+        <div class="card-action center grey lighten-5" >
+          <a href="/confirm-now-booking"  style="background-color: rgb(6, 117, 117);" class="btn btn-secondary">Confirm Booking</a>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+ 
+
+{% endblock %}

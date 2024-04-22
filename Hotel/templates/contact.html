@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="h-100 gradient-form"  style="background-color:rgba(229, 243, 238, 0.776);" data-stellar-background-ratio=".5">
+  <br><br><br><br><br>
+  <div class="container" style="height: 900px;">
+    <div class="row">
+      <img src="{% static 'images/x.jpg' %}" alt="Image" class="img-fluid rounded" style="height: 480px;position: relative;left: -150px; width: 700px;top: 100px;">
+                <div class="text-center" style="position: relative;left: 300px; bottom: 300px;width:800px;">
+               
+    
+     
+              </div>
+            </div>
+            <div class="col-lg-6"style="position: relative;left: 600px;bottom: 535px;">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h4 class="mt-1 mb-5 pb-1"></h4>
+                {% if messages %}
+                    {% for messsage in messages %}
+                    {% if messsage.tags == 'info' %}
+                    <div class='chip green text-center border border-dark'style="position: relative;right: 15px;" ><h2 style="color:black; font-weight: 100px;font-family: 'Cookie';">{{messsage}}</h2> <i class="fa-sharp fa-solid fa-face-smile" style="color: rgb(246, 162, 26);font-size: 28px;"></i></div>
+                   {% endif %}
+                    {% if messsage.tags == 'warning' %}
+                   <div class='chip red white-text' style="color: red;">{{messsage}}</div>
+                   {% endif %}
+                   <br>
+                    {% endfor %}
+                    {% endif %}  
+     
+                    <!--  -->
+                
+                      
+<!--  -->
+<div style="position: relative;top: 70px;">
+<h3 style="font-family: 'Cookie';font-size:42px;color: black; ">Contact Us......</h3><br>
+
+<form action="/contact-us" method="POST" >
+  {% csrf_token %}
+
+
+<div class="form-outline mb-4 ">
+                    <input type="email" name="email" id="email"  required class="validate"><br>
+                    <label class="form-label" for="email" style="color: black;">Email</label>
+                   </div>
+
+                  <div class="form-outline mb-4">
+                 
+                    <input type="text" name="name" id="username"  required class="validate"><br>
+                    <label class="form-label" for="username" style="color: black;">Username</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                   
+                    <textarea id="textarea1" class="materialize-textarea" name="message" data-length="1000"  required class="validate"></textarea><br>
+                    <label class="form-label" for="textarea1" style="color: black;">Message</label>
+                  </div>
+       
+                  <div class="center">
+                    <input type="submit" value="submit" name="submit" class="btn btn-secondary" style="position: relative;left:10px;background-color: rgb(6, 117, 117);">
+                    
+                  </div>
+
+                 
+
+                </form>
+             
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"> 
+
+{% endblock %}

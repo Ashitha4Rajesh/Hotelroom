@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+<section class="h-100 gradient-form"  style="background-color:rgba(229, 243, 238, 0.776);" data-stellar-background-ratio=".5"  style="height: 800px;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        {% block content %}
+        
+        <div style="position:relative;top:200px; height: 600px;background-color:rgba(229, 243, 238, 0.776);">
+            <h3 class="text-center">{{msg}}</h3> 
+            <h5 class="text-center">Thank You....</h5><br>
+            <a href="{% url 'customer:customer_dashboard' %}" class="btn btn-danger " style="position:relative;left:650px;background-color:rgb(6, 95, 89); color: white;"><b>Continue Booking</b></a></div>
+</section>
+{% endblock %}

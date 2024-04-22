@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="h-100 gradient-form"  style="background-color:rgba(229, 243, 238, 0.776);" data-stellar-background-ratio=".5">
+  <br><br><br><br><br>
+  <div class="container" style="height: 900px;">
+    <div class="row">
+      <img src="{% static 'images/x.jpg' %}" alt="Image" class="img-fluid rounded" style="height: 480px;position: relative;left: -150px; width: 700px;top: 100px;">
+                <div class="text-center" style="position: relative;left: 300px; bottom: 300px;width:800px;">
+               
+     <h5 style="position: relative;right:530px;bottom: 130px;"> For <b>Room Manager</b> Signup/Login</h5> <a href="{% url 'register:manager_login' %}" style="color: red;position: relative;right:350px;bottom: 165px;">Click Here</a>
+     
+              </div>
+            </div>
+            <div class="col-lg-6"style="position: relative;left: 600px;bottom: 535px;">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <h6 class="mt-1 mb-5 pb-1">
+                  {% if messages %}
+     {% for messsage in messages %}
+    
+   
+    <div class='chip red white-text' style="color: red;">{{messsage}}</div>
+    
+    <br>
+     {% endfor %}
+     {% endif %}</h6>
+                </div>
+
+                <form method="POST" action="/user/login">
+                  <h4 style="color: black;">Please login to your account</h4>
+<br>
+                  <div class="form-outline mb-4">
+                    <input type="text" name="username" id="username"  class="form-control"
+                      placeholder="Username"  required class="validate"/>
+                    <label class="form-label" for="form2Example11" style="color: black;">Username</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password"  required class="validate"/>
+                    <label class="form-label" for="form2Example22" style="color: black;">Password</label>
+                  
+                  {% csrf_token %}
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <input type="submit" value="Login" name="login" class="btn btn-large" style="background-color:rgb(6, 117, 117) ;color:white;">
+                    
+                  
+
+                  <div class="d-flex align-items-center justify-content-center pb-4" ><br><br>
+                    <br><br><p class="mb-0 me-1" style="color: black;position: relative;left: 30px;">Don't have an account?</p>&nbsp;
+                    <a class="btn btn-secondary" href="{% url 'register:user_signup' %}" style="position: relative;left: 35px;background-color:rgba(179, 10, 30, 0.562)  ;">Create new</a>
+                  </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

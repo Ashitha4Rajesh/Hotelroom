@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="h-100 gradient-form"  style="background-color:rgba(229, 243, 238, 0.776)" data-stellar-background-ratio=".5"  style="height: 1000px;">
+ <br><br><br><br><br> <br><br><br>
+ <div style="height:800px">
+  {% if b.paid %}
+  <div class='chip green text-center 'style="position: relative;right: 15px;top: 100px;font-family: 'Cookie';" ><h1 style="font-family: 'Cookie'; font-size: 62px;">Payment is done for this booking</h1><i class="fa-sharp fa-solid fa-face-smile" style="color: rgb(246, 162, 26);font-size: 48px;"></i></div>
+  <a href="{% url 'customer:customer_dashboard' %}" class="btn btn-danger "  style="position:relative;left:630px;top:200px;background-color:rgba(5, 72, 71, 0.936); color: white;"><b>Continue Ordering</b></a> 
+  {% else %}
+ 
+  {% if messages %}
+  {% for messsage in messages %}
+  {% if messsage.tags == 'info' %}
+ <div class='chip green white-text' ><h3 style="color:red;">{{messsage}}</h3></div>
+ {% endif %}
+  {% if messsage.tags == 'warning' %}
+ <div class='chip red white-text' style="color: red;">{{messsage}}</div>
+ {% endif %}
+ <br>
+  {% endfor %}
+  {% endif %}
+<div style="height: 900px;">
+  <div class="row">
+   
+       <div class="col-6 ">
+      
+        <table class="table table-bordered " style="background-color: rgb(10, 126, 124, 0.779)"><th colspan="5">Food Items</th></tr>
+          {% for i in c %}
+          <tr><td><img src="{{i.product1.image.url}}"  alt="..." width="100px" height="100px" ></td><td>{{i.product1.name}}</td><td>Quantity:{{i.quantity}}<br>Unit Price:{{i.product1.price}}<br>Subtotal:<i class="fa-solid fa-indian-rupee-sign"></i>{{i.subtotal}}</td>
+          
+           
+          </tr>
+          
+        {% endfor %}</table><table class="table table-bordered " style="background-color:rgb(10, 126, 124, 0.779)"><tr><td class="text-center"><b>Total: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{total}}</span></b></td></tr></table> </div>
+      
+     
+           
+               <div class="col-6 ">
+              
+                <table class="table table-bordered " style="background-color: rgb(10, 126, 124, 0.779);"><tr><th colspan="5">Room Details</th></tr>
+                
+                  <tr><td><img src="{{b.pay_book.room_no.room_image.url}}"  alt="..." width="100px" height="100px" ></td><td>{{b.pay_book.room_no}}</td><td>Start Date:{{b.pay_book.start_day}}<br>End Date:{{b.pay_book.end_day}}<br>Subtotal:<i class="fa-solid fa-indian-rupee-sign"></i>{{b.pay_book.amount}}</td>
+                  
+                   
+                  </tr>
+                  
+               </table> <table class="table table-bordered " style="background-color:rgb(10, 126, 124, 0.779);"><tr><td class="text-center"><b>Total: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{t}}</span></b></td></tr></table>
+              </div>
+             
+              </div>
+
+{% if b %}
+<div class="col-6 ">  <table class="table table-bordered  " style="position:relative;left:400px;background-color:rgb(10, 126, 124, 0.779);"><tr><th colspan="5">Payment</th></tr><tr><td class="text-center"><b>Total: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{total1}}</span></b></td></tr>
+</tr><tr><td class="text-center"><b>Pay the Deposit: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{deposit}}</span></b></td></tr>
+<tr><td class="text-center"><b>Balance to pay: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{balance}}</span></b></td></tr></table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br><a href="{% url 'customer:orderform' %}" class="btn btn-danger "  style="position:relative;left:770px;background-color:rgba(5, 72, 71, 0.936); color: white;"><b>Place Order</b></a>
+  <a href="{% url 'customer:customer_dashboard' %}" class="btn btn-danger "  style="position:relative;left:400px;background-color:rgba(5, 72, 71, 0.936); color: white;"><b>Continue Ordering</b></a> 
+  {% endif %}
+  <!-- <a href="{% url 'customer:customer_dashboard' %}" class="btn btn-danger "  style="position:relative;left:630px;background-color:rgb(6, 95, 89); color: white;"><b>Continue Ordering</b></a>  -->
+
+</div>
+</div>
+
+<!-- {% if c %}
+<div class="col-6 ">  <table class="table table-bordered  " style="position:relative;left:400px;background-color:rgb(13, 200, 187);"><tr><th colspan="5">Payment</th></tr><tr><td class="text-center"><b>Total: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{total1}}</span></b></td></tr>
+</tr><tr><td class="text-center"><b>Pay the Deposit: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{deposit}}</span></b></td></tr>
+<tr><td class="text-center"><b>Balance to pay: <span class="text-danger"><i class="fa-solid fa-indian-rupee-sign"></i>{{balance}}</span></b></td></tr></table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br><a href="{% url 'customer:orderform' %}" class="btn btn-danger "  style="position:relative;left:670px;background-color:rgb(6, 95, 89); color: white;"><b>Place Order</b></a>
+  <a href="{% url 'customer:customer_dashboard' %}" class="btn btn-danger "  style="position:relative;left:300px;background-color:rgb(6, 95, 89); color: white;"><b>Continue Ordering</b></a> 
+  {% endif %} -->
+  
+</div>
+
+</div>
+
+<div>
+
+</div>
+{% endif %}
+</div>
+</section>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+{% endblock %}

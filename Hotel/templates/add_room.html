@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="h-100 gradient-form"  style="background-color:rgba(229, 243, 238, 0.776);" data-stellar-background-ratio=".5">
+  <br><br><br><br><br>
+  <div class="container" style="height: 900px;">
+    <div class="row">
+      <img src="{% static 'images/x.jpg' %}" alt="Image" class="img-fluid rounded" style="height: 480px;position: relative;left: -150px; width: 500px;top: 100px;">
+                <div class="text-center" style="position: relative;left: 300px; bottom: 300px;width:800px;">
+               
+    
+     
+              </div>
+            </div>
+            <div class="col-lg-6"style="position: relative;left: 400px;bottom: 570px;">
+             
+              
+              <br><br><br><br><br>
+              <div class="card-body p-5 mx-md-4 border border-dark" style="width: 800px;background-color:  rgba(11, 134, 132, 0.936);position: relative;top:50px;">
+                <form class="col s12" method="POST" action="/user/add-room/new/" enctype="multipart/form-data" style="position:relative;left: 10px;">
+                  {% csrf_token %}
+                  <div class="form-outline mb-4 " >
+                    {% if messages %}
+              {% for messsage in messages %}
+              {% if messsage.tags == 'info' %}
+             <div class='chip green white-text' style="color: red;">{{messsage}}</div>
+             {% endif %}
+              {% if messsage.tags == 'warning' %}
+             <div class='chip red white-text' style="color: red;">{{messsage}}</div>
+             {% endif %}
+             <br>
+              {% endfor %}
+              {% endif %}
+                    <label for="first_name" style="color: black;">Room No</label>
+                    <input placeholder="Enter Room No" id="first_name" type="text" name="room_no"  required class="validate">
+                   </div>
+                   <div class="form-outline mb-4">
+                    
+                    <label style="color: black;">Room Type</label>
+  <select class="browser-default" name="room_type"  required class="validate">
+    <option value="Single Room">Single Room</option>
+    <option value="Double Room">Double Room</option>
+    <option value="Deluxe Room">Deluxe Room</option>
+    <option value="Super Deluxe Room">Super Deluxe Room</option>
+
+  </select>
+                 
+                </div>
+              <div class="form-outline mb-4">
+                    <label for="price" style="color: black;">Price</label>
+                    <input type="text" name="price" id="price"  required class="validate">
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <span style="color: black;"><i class="material-icons left black-text text-lighten-1"></i> Room Image</span>
+                    <input type="file" name="room_image"  required class="validate">
+                   
+                  </div>
+                 
+                 
+
+                  <div class="form-outline mb-4">
+                    <label for="start_day" style="color: black;">From when room will be available for booking</label>
+                    <input type="date" name="start_day" id="start_day" class="datepicker"  required class="validate">
+
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label for="end_day" style="color: black;">From when room will not be available for booking</label>
+                    <input type="date" name="end_day" id="end_day" class="datepicker"  required class="validate">
+
+                  </div>
+                  <div class="center" style="position:relative;left: 130px;">
+                    <input type="submit" class="btn green btn-large " value="Add Room" style="background-color: rgb(6, 117, 117);color:white" >
+                    </div>
+
+                 
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+{% endblock %}

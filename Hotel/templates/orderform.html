@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="h-100 gradient-form"  style="background-color:rgba(11, 134, 132, 0.936);" data-stellar-background-ratio=".5"  style="height: 800px;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       
+  <h3 style="position:relative;top:250px;left:360px;font-family: 'Cookie';font-size: 40px;">Pay Here</h3>
+        <div style="position:relative;top:280px;left:350px; height: 700px;" class="col-lg-6">
+        
+          <form method="POST" >
+          {% csrf_token %}
+          <div class="form-outline mb-4">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" placeholder="ENTER YOUR NAME" name="n" required class="validate" class="form-control">
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label">Account Number</label>
+            <input type="text" class="form-control" placeholder="ENTER THE ACCOUNT NUMBER" name="a" required class="validate" class="form-control">
+          </div>
+          <div class="form-outline mb-4">
+              <label class="form-label">Phone</label>
+              <input type="text" class="form-control" placeholder="ENTER THE PHONE NUMBER" name="p" required class="validate" class="form-control">
+            </div>
+           
+            <div class="form-outline mb-4">
+                      <input type="submit" class="form-control">
+            </div>
+          </form></div>
+</section>
+{% endblock %}
